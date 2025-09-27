@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://di327o3uvppw"]
+
+[ext_resource type="Script" uid="uid://bep05db2p2xm2" path="res://Scripts/Warning/warning.gd" id="1_hj0mi"]
+
+[sub_resource type="Animation" id="Animation_dmrdd"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 1),
+"transitions": PackedFloat32Array(0.07966006, 0.70710707),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bd558"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_io1o4"]
+_data = {
+&"Fade out": SubResource("Animation_dmrdd"),
+&"RESET": SubResource("Animation_bd558")
+}
+
+[node name="Warning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hj0mi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 450.00003
+offset_top = 474.99997
+offset_right = 768.00006
+offset_bottom = 550.0
+scale = Vector2(3.0722675, 2.5393288)
+text = "                           WARNING!
+This game contains flashing lights, loud 
+         noises and lots of jumpscares"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.984
+autostart = true
+
+[node name="animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label")
+libraries = {
+&"": SubResource("AnimationLibrary_io1o4")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

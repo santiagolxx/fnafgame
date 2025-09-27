@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NightConfig" load_steps=2 format=3 uid="uid://cykved53th2ui"]
+
+[ext_resource type="Script" uid="uid://cqrdhpno6uq3u" path="res://Scripts/Nights/night_config.gd" id="1_bgpte"]
+
+[resource]
+script = ExtResource("1_bgpte")
+red_level = 1
+metadata/_custom_type_script = "uid://cqrdhpno6uq3u"

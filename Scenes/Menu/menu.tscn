@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=3 uid="uid://esah0gbdn7us"]
+
+[ext_resource type="Texture2D" uid="uid://dxcvyxmkim3ei" path="res://Graphics/Menu/Sprites/431.png" id="1_qok0p"]
+[ext_resource type="Texture2D" uid="uid://dwd8r235jxc80" path="res://Graphics/Menu/Sprites/440.png" id="2_hgg7c"]
+[ext_resource type="Texture2D" uid="uid://cbxk8sfi133k5" path="res://Graphics/Menu/Sprites/441.png" id="3_3fcxt"]
+[ext_resource type="Texture2D" uid="uid://c3a40kk8xf5kh" path="res://Graphics/Menu/Sprites/442.png" id="4_u2ioa"]
+[ext_resource type="Script" uid="uid://2ioip2bmp53u" path="res://Scripts/Menu/menu.gd" id="5_hgg7c"]
+[ext_resource type="Texture2D" uid="uid://c3ivmgfixrjn4" path="res://Graphics/Menu/Static/12.png" id="5_wxa3f"]
+[ext_resource type="Texture2D" uid="uid://cm2w8egx8rad8" path="res://Graphics/Menu/Static/13.png" id="6_0401g"]
+[ext_resource type="Texture2D" uid="uid://s1xml68g852q" path="res://Graphics/Menu/Static/14.png" id="7_lnqkc"]
+[ext_resource type="Texture2D" uid="uid://2640b3nlugn1" path="res://Graphics/Menu/Static/15.png" id="8_wv7rd"]
+[ext_resource type="Texture2D" uid="uid://tnetwwprv1ug" path="res://Graphics/Menu/Static/16.png" id="9_k0qon"]
+[ext_resource type="Texture2D" uid="uid://be2t8o4aysau7" path="res://Graphics/Menu/Static/17.png" id="10_jqvb7"]
+[ext_resource type="Texture2D" uid="uid://vtdnyy4kb8rv" path="res://Graphics/Menu/Static/18.png" id="11_6j47b"]
+[ext_resource type="Texture2D" uid="uid://sdu1qgm2i8xa" path="res://Graphics/Menu/Static/20.png" id="12_m7ue0"]
+[ext_resource type="AudioStream" uid="uid://c4e0l6et5sqy0" path="res://Graphics/Menu/menu_theme.wav" id="14_3fcxt"]
+[ext_resource type="Script" uid="uid://b2f38rg86ynas" path="res://Scripts/Menu/menu_btn.gd" id="15_u2ioa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihsho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qok0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hgg7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3fcxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u2ioa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qok0p")
+}],
+"loop": false,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cc6hi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wxa3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0401g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lnqkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wv7rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k0qon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jqvb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6j47b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m7ue0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("5_hgg7c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="menuAnimatronic" type="AnimatedSprite2D" parent="."]
+position = Vector2(959.99994, 539.99994)
+scale = Vector2(1.5, 1.5000001)
+sprite_frames = SubResource("SpriteFrames_ihsho")
+
+[node name="menuStatic" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.31764707)
+position = Vector2(960, 540)
+scale = Vector2(1.4999999, 1.5000001)
+sprite_frames = SubResource("SpriteFrames_cc6hi")
+frame_progress = 0.758879
+
+[node name="menuThemePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_3fcxt")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="CanvasLayer2"]
+offset_left = 81.0
+offset_top = 31.999998
+offset_right = 146.0
+offset_bottom = 133.0
+scale = Vector2(7.461912, 4.140793)
+text = "Five
+Nights
+at
+Freddy's"
+
+[node name="menuNewGame" type="Label" parent="CanvasLayer2"]
+offset_left = 96.0
+offset_top = 485.0
+offset_right = 188.7778
+offset_bottom = 509.95798
+scale = Vector2(3.6887457, 3.1892712)
+mouse_filter = 0
+text = "New Game"
+script = ExtResource("15_u2ioa")
+
+[node name="menuContinue" type="Label" parent="CanvasLayer2"]
+offset_left = 99.00001
+offset_top = 586.0
+offset_right = 184.0
+offset_bottom = 609.0
+scale = Vector2(3.6, 2.6444442)
+mouse_filter = 0
+text = "Continue"
+script = ExtResource("15_u2ioa")
+
+[node name="menuNewGameSelect" type="Label" parent="CanvasLayer2"]
+visible = false
+offset_left = 31.0
+offset_top = 492.00003
+offset_right = 50.0
+offset_bottom = 515.0
+scale = Vector2(3.6, 2.6444442)
+text = ">>"
+
+[node name="menuContinueSelect" type="Label" parent="CanvasLayer2"]
+visible = false
+offset_left = 27.000004
+offset_top = 582.0
+offset_right = 46.000004
+offset_bottom = 605.0
+scale = Vector2(3.6, 2.6444442)
+text = ">>"
+
+[node name="AnimatronicTimer" type="Timer" parent="."]
+wait_time = 4.042000000000001
+autostart = true
+
+[connection signal="clicked" from="CanvasLayer2/menuNewGame" to="." method="_on_menu_new_game_clicked"]
+[connection signal="mouse_entered" from="CanvasLayer2/menuNewGame" to="." method="_on_menu_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer2/menuNewGame" to="." method="_on_menu_new_game_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer2/menuContinue" to="." method="_on_menu_continue_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer2/menuContinue" to="." method="_on_menu_continue_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer2/menuNewGameSelect" to="." method="_on_menu_new_game_select_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer2/menuNewGameSelect" to="." method="_on_menu_new_game_select_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer2/menuContinueSelect" to="." method="_on_menu_continue_select_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer2/menuContinueSelect" to="." method="_on_menu_continue_select_mouse_exited"]
+[connection signal="timeout" from="AnimatronicTimer" to="." method="_on_animatronic_timer_timeout"]
