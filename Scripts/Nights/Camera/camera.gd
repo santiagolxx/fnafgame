@@ -8,6 +8,7 @@ var all_feeds: Array[Sprite2D]
 var all_buttons: Array[TextureButton]
 
 @onready var animtree: AnimationTree = $AnimationTree
+@onready var camera_switch_audio_player: AudioStreamPlayer2D = $cameraSwitchAudioPlayer
 
 func _ready() -> void:
 	_initialize_buttons()
@@ -35,7 +36,7 @@ func switch_feed(new_feed: int) -> void:
 	# This handles camera switching, but blocks it when clicking the same camera button
 	if current_feed != new_feed:
 		play_static()
-		
+		camera_switch_audio_player.play()
 		all_feeds[current_feed].visible = false
 		all_buttons[current_feed].disabled = false
 		

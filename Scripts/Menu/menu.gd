@@ -2,6 +2,7 @@ extends Node2D
 
 # Nodos
 @onready var menuStatic = $menuStatic
+@onready var menuStaticPlayer = $menuStaticPlayer
 @onready var menuThemePlayer = $menuThemePlayer
 @onready var AnimatronicSprite = $menuAnimatronic
 @onready var newGameSelect = $CanvasLayer2/menuNewGameSelect
@@ -10,7 +11,7 @@ extends Node2D
 func _ready() -> void:
 	menuStatic.play()
 	menuThemePlayer.play()
-
+	menuStaticPlayer.play()
 # Animación del animatrónico
 func _on_animatronic_timer_timeout() -> void:
 	AnimatronicSprite.play("default")

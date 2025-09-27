@@ -6,14 +6,26 @@ var night_timer: Timer
 var night_duration: float = 0.0
 
 @onready var ai_manager = $CharacterAI  # Referencia al nodo AI
-
 func _ready():
 	_load_night_configs()
 	start_next_night()
+	$AmbientAudioPlayers/ambientStreamPlayer.play()
+	$AmbientAudioPlayers/musicStreamPlayer.play()
 
 func _load_night_configs():
-	nights.append(load("res://Config/Nights/Night1.tres"))
-	nights.append(load("res://Config/Nights/Night2.tres"))
+	var dir = DirAccess.open("res://Config/Nights/")
+	if dir:
+		dir.list_dir_begin()
+		var file = dir.get_next()
+		while file != "":
+			if dir.current_is_dir():
+				file = dir.get_next()
+				continue
+			if file.ends_with(".tres"):
+				nights.append(load("res://Config/Nights/" + file))
+			file = dir.get_next()
+		dir.list_dir_end()
+
 
 func start_next_night():
 	current_index += 1

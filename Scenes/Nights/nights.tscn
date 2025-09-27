@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cthhku8fsrdeq"]
+[gd_scene load_steps=59 format=3 uid="uid://cthhku8fsrdeq"]
 
 [ext_resource type="Script" uid="uid://babox67oh2xx3" path="res://Scripts/Nights/Office/office_manager.gd" id="1_pp75g"]
 [ext_resource type="Script" uid="uid://b8nc06nhwhgfd" path="res://Scripts/Nights/nights.gd" id="1_xn6a7"]
@@ -23,6 +23,9 @@
 [ext_resource type="Script" uid="uid://c8etmv2lj5mg7" path="res://Scripts/Nights/AI/Characters/red_ai.gd" id="20_h065c"]
 [ext_resource type="Shader" uid="uid://b7sl4psypgsnm" path="res://Shaders/equirectangular_perspective.gdshader" id="20_obh0f"]
 [ext_resource type="Script" uid="uid://cgcqgc6ecwo8t" path="res://Scripts/Nights/AI/Characters/green_ai.gd" id="21_ujdr3"]
+[ext_resource type="AudioStream" uid="uid://cbcjw4tvrlxte" path="res://Sounds/Light_Humming.ogg" id="24_fbex5"]
+[ext_resource type="AudioStream" uid="uid://dn4j4p243k0nx" path="res://Sounds/Ambience_MusicBox.ogg" id="25_bdvbr"]
+[ext_resource type="AudioStream" uid="uid://bj3jjucwplq0o" path="res://Sounds/Camera_Change.ogg" id="26_pqsei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qos"]
 size = Vector2(256, 256)
@@ -567,6 +570,9 @@ parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 
+[node name="cameraSwitchAudioPlayer" type="AudioStreamPlayer2D" parent="CameraElements"]
+stream = ExtResource("26_pqsei")
+
 [node name="CharacterAI" type="Node" parent="."]
 script = ExtResource("19_nqdqv")
 
@@ -592,6 +598,16 @@ material = SubResource("ShaderMaterial_kco4d")
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
+
+[node name="AmbientAudioPlayers" type="Node" parent="."]
+
+[node name="ambientStreamPlayer" type="AudioStreamPlayer2D" parent="AmbientAudioPlayers"]
+stream = ExtResource("24_fbex5")
+volume_db = -12.147
+
+[node name="musicStreamPlayer" type="AudioStreamPlayer" parent="AmbientAudioPlayers"]
+stream = ExtResource("25_bdvbr")
+volume_db = -13.82
 
 [connection signal="input_event" from="OfficeElements/Office/Buttons/LeftDoorButton/Area2D" to="OfficeElements" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="OfficeElements/Office/Buttons/ButtonExample2/Area2D" to="OfficeElements" method="_on_area_2d_input_event"]

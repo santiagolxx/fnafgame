@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://esah0gbdn7us"]
+[gd_scene load_steps=19 format=3 uid="uid://esah0gbdn7us"]
 
 [ext_resource type="Texture2D" uid="uid://dxcvyxmkim3ei" path="res://Graphics/Menu/Sprites/431.png" id="1_qok0p"]
 [ext_resource type="Texture2D" uid="uid://dwd8r235jxc80" path="res://Graphics/Menu/Sprites/440.png" id="2_hgg7c"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://sdu1qgm2i8xa" path="res://Graphics/Menu/Static/20.png" id="12_m7ue0"]
 [ext_resource type="AudioStream" uid="uid://c4e0l6et5sqy0" path="res://Sounds/menu_theme.wav" id="14_u2ioa"]
 [ext_resource type="Script" uid="uid://b2f38rg86ynas" path="res://Scripts/Menu/menu_btn.gd" id="15_u2ioa"]
+[ext_resource type="AudioStream" uid="uid://dg4fkefqfsqen" path="res://Sounds/Glitch_Menu.ogg" id="15_wxa3f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ihsho"]
 animations = [{
@@ -96,6 +97,10 @@ frame_progress = 0.758879
 
 [node name="menuThemePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_u2ioa")
+
+[node name="menuStaticPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_wxa3f")
+volume_db = -1.67
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
