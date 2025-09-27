@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="NightConfig" load_steps=2 format=3 uid="uid://3xou4duxs2o8"]
-
-[ext_resource type="Script" uid="uid://cqrdhpno6uq3u" path="res://Scripts/Nights/night_config.gd" id="1_72dqv"]
-
-[resource]
-script = ExtResource("1_72dqv")
-red_level = 3
-green_level = 2
-metadata/_custom_type_script = "uid://cqrdhpno6uq3u"
